@@ -6,14 +6,14 @@
           <th width="1"></th>
           <th></th>
           <th class="font-bold p-2">P</th>
-          <th class="font-bold p-2">w</th>
+          <th class="font-bold p-2">W</th>
           <th class="font-bold p-2">L</th>      
           <th class="font-bold p-2">Pts</th>
         </tr>
       </thead>
       <tbody>
         <tr 
-          v-for="(edge, index) in $page.players.edges"
+          v-for="(edge, index) in players"
           :key="edge.node.id"
           class="border-t border-gray-600"
         >
@@ -29,10 +29,10 @@
             </div>
           </td>
           
-          <td class="px-2">999</td>
-          <td class="px-2">99</td>
-          <td class="px-2">99</td>
-          <td class="px-2">280</td>
+          <td class="px-2">{{ edge.node.wins + edge.node.losses }}</td>
+          <td class="px-2">{{ edge.node.wins }}</td>
+          <td class="px-2">{{ edge.node.losses }}</td>
+          <td class="px-2">{{ edge.node.wins * 3 }}</td>
         </tr>
       </tbody>
     </table>
@@ -43,17 +43,24 @@
 export default {
   metaInfo: {
     title: 'Hitmarker Pool'
+  },
+  computed: {
+    players () {
+      return this.$page.players.edges;
+    }
   }
 }
 </script>
 
 <page-query>
   query {
-    players: allPlayer {
+    players: allPlayer  {
       edges {
         node {
           name
           photo
+          wins
+          losses
         }
       }
     }
