@@ -1,44 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Textarea from 'react-textarea-autosize';
+import uuid from 'uuid/v4';
 
-export default class TextControl extends React.Component {
-  // static propTypes = {
-  //   onChange: PropTypes.func.isRequired,
-  //   forID: PropTypes.string,
-  //   value: PropTypes.node,
-  //   classNameWrapper: PropTypes.string.isRequired,
-  //   setActiveStyle: PropTypes.func.isRequired,
-  //   setInactiveStyle: PropTypes.func.isRequired,
-  // };
+export default class idWidgetControl extends React.Component {
+  getInitialState() { return {}; }
 
-  // static defaultProps = {
-  //   value: '',
-  // };
+  componentDidMount() {
+    if (!this.props.value) {
+      this.props.onChange(uuid());
+    }
+  }
 
-  /**
-   * Always update to ensure `react-textarea-autosize` properly calculates
-   * height. Certain situations, such as this widget being nested in a list
-   * item that gets rearranged, can leave the textarea in a minimal height
-   * state. Always updating this particular widget should generally be low cost,
-   * but this should be optimized in the future.
-   */
-  shouldComponentUpdate() {
-    return true;
+  handleChange() {
+    this.props.onChange(uuid());
   }
 
   render() {
-    const {
-      forID,
-      value,
-      onChange,
-      classNameWrapper,
-      setActiveStyle,
-      setInactiveStyle,
-    } = this.props;
-
-    return (
-      `<div>TEST</div>`
-    );
+    return window.h('p', null, `${this.props.value}`);
   }
 }
+

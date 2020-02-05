@@ -13,8 +13,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      # - {label: "ID", name: "id", widget: "id"}
-      - {label: "ID", name: "id", widget: "testWidget"}
+      - {label: "ID", name: "id", widget: "id"}
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Photo", name: "photo", widget: "image"}
   - name: "matches"
