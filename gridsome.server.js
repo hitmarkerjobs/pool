@@ -7,7 +7,11 @@
 
 module.exports = function (api) {
   api.loadSource(async store => {
-    // const players = store.getCollection('Player');
-    // console.log(players.data());
+    const players = store.getCollection('Player');
+    const matches = store.getCollection('Matches').data();
+
+    matches.forEach(match => {
+      console.log(match);
+    });
   });
 }

@@ -39,28 +39,3 @@ module.exports = {
     },
   }
 }
-
-
-// import uuid from 'uuid/v4';
-
-// const IdControl = window.createClass({
-//   getInitialState: function () { return {}; },
-//   componentDidMount: function () {
-//     if (!this.props.value) {
-//       this.props.onChange(uuid());
-//     }
-//   },
-//   handleChange() {
-//     this.props.onChange(uuid());
-//   },
-//   render: function () {
-//     return window.h('p', null, `${this.props.value}`);
-//   }
-// });
-
-// const IdPreview = window.createClass({
-//   getInitialState: function () { console.log(this.props); return {}; },
-//   render: function () {
-//     return window.h('p', null, `ID: ${this.props.value}`);
-//   }
-// });
