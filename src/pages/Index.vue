@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <table class="table-auto w-full border border-gray-600 text-center">
+    <table class="table-auto w-full border border-gray-700 text-center">
       <thead>
         <tr class="bg-gray-800">
           <th width="1"></th>
@@ -15,7 +15,7 @@
         <tr 
           v-for="(edge, index) in players"
           :key="edge.node.id"
-          class="border-t border-gray-600"
+          class="border-t border-gray-700"
         >
           <td class="px-4">{{ index+1 }}</td>
 

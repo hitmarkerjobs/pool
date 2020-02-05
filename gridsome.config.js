@@ -1,7 +1,7 @@
 const tailwindcss = require("tailwindcss");
 
 module.exports = {
-  siteName: 'Pool',
+  siteName: 'Hitmarker Pool',
   plugins: [
     {
       use: '@gridsome/source-filesystem',
@@ -37,5 +37,15 @@ module.exports = {
         ],
       },
     },
+  },
+  icon: {
+    favicon: {
+      src: './src/assets/ico/htmrkr.png',
+      sizes: [16, 32]
+    },
+    touchicon: {
+      src: './src/assets/ico/htmrkr_bg.png',
+      sizes: [180, 192, 512]
+    }
   }
 }
