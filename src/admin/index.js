@@ -1,4 +1,6 @@
 import CMS from "netlify-cms";
-import { Widget as IdWidget } from '@ncwidgets/id';
+import controlComponent from './idWidgetControl';
+import previewComponent from './idWidgetPreview';
 
-CMS.registerWidget(IdWidget)
+// Register the widget. This lets NetlifyCMS know about our custom widget
+CMS.registerWidget('id', controlComponent, previewComponent);

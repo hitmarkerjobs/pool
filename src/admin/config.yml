@@ -13,10 +13,10 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
+      # - {label: "ID", name: "id", widget: "id"}
+      - {label: "ID", name: "id", widget: "testWidget"}
       - {label: "Name", name: "name", widget: "string"}
-      - label: "Photo"
-        name: "photo"
-        widget: "image"
+      - {label: "Photo", name: "photo", widget: "image"}
   - name: "matches"
     label: "Matches"
     folder: "matches"
@@ -39,7 +39,8 @@ collections:
             widget: "relation"
             collection: "players"
             searchFields: ['name']
-            valueField: "name"
+            displayFields: ['name']
+            valueField: "id"
           - label: "Score"
             name: "score"
             widget: "number"
@@ -54,7 +55,8 @@ collections:
             widget: "relation"
             collection: "players"
             searchFields: ['name']
-            valueField: "name"
+            displayFields: ['name']
+            valueField: "id"
           - label: "Score"
             name: "score"
             widget: "number"
