@@ -20,39 +20,46 @@ collections:
   - name: "matches"
     label: "Matches"
     folder: "matches"
-    identifier_field: matchDate
     create: true
     slug: "{{slug}}"
-    fields:
-      - label: "Player 1"
-        name: "player1"
-        widget: "object"
-        fields:
-          - { 
-            label: "Player",
-            name: "player",
-            widget: "relation",
-            collection: "players",
-            searchFields: ['name'],
-            valueField: "name"
-          }
-          - { label: "Score", name: "score", widget: "number", min: 0, max: 3 }
-      - label: "Player 2"
-        name: "player2"
-        widget: "object"
-        fields:
-          - { 
-            label: "Player",
-            name: "player",
-            widget: "relation",
-            collection: "players",
-            searchFields: ['name'],
-            valueField: "name"
-          }
-          - { label: "Score", name: "score", widget: "number", min: 0, max: 3 }
-      - label: "Match Date"
-        name: "matchDate"
-        widget: "datetime"
-        dateFormat: "DD.MM.YYYY" # e.g. 24.12.2021
-        timeFormat: "HH:mm" # e.g. 21:07
-        format: "LLL"
+    fields: 
+      - label: ID
+        name: id
+        widget: ncw-id
+        prefix: match
+      # - label: "Player 1"
+      #   name: "player1"
+      #   widget: "object"
+      #   fields:
+      #     - label: "Player"
+      #       name: "player"
+      #       widget: "relation"
+      #       collection: "players"
+      #       searchFields: ['name']
+      #       valueField: "name"
+      #     - label: "Score"
+      #       name: "score"
+      #       widget: "number"
+      #       min: 0
+      #       max: 3
+      # - label: "Player 2"
+      #   name: "player2"
+      #   widget: "object"
+      #   fields:
+      #     - label: "Player"
+      #       name: "player"
+      #       widget: "relation"
+      #       collection: "players"
+      #       searchFields: ['name']
+      #       valueField: "name"
+      #     - label: "Score"
+      #       name: "score"
+      #       widget: "number"
+      #       min: 0
+      #       max: 3
+      # - label: "Match Date"
+      #   name: "matchDate"
+      #   widget: "datetime"
+      #   dateFormat: "DD.MM.YYYY" # e.g. 24.12.2021
+      #   timeFormat: "HH:mm" # e.g. 21:07
+      #   format: "LLL"
