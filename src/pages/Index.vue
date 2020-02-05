@@ -1,26 +1,62 @@
 <template>
   <Layout>
-    <!-- Learn how to use images here: https://gridsome.org/docs/images -->
-    <g-image alt="Example image" src="~/favicon.png" width="135" />
+    <table class="table-auto w-full border border-gray-600 text-center">
+      <thead>
+        <tr class="bg-gray-800">
+          <th width="1"></th>
+          <th></th>
+          <th class="p-2">P</th>
+          <th class="p-2">w</th>
+          <th class="p-2">L</th>      
+          <th class="p-2">Pts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-t border-gray-600">
+          <td class="px-4">2</td>
 
-    <h1 class="font-bold">Hello, world!</h1>
+          <td class="text-left pr-2">
+            <div class="flex items-center">
+              <div class="flex-none w-16 h-16">
+                <g-image src="~/assets/img/phil.jpg" />
+              </div>
 
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur excepturi labore tempore expedita, et iste tenetur suscipit explicabo! Dolores, aperiam non officia eos quod asperiores
-    </p>
+              <div class="font-bold ml-4">James</div>
+            </div>
+          </td>
+          
+          <td class="px-2">999</td>
+          <td class="px-2">99</td>
+          <td class="px-2">99</td>
+          <td class="px-2">280</td>
+        </tr>
+        <tr class="border-t border-gray-600">
+          <td class="px-2">2</td>
 
-    <p class="home-links">
-      <a href="https://gridsome.org/docs/" target="_blank" rel="noopener">Gridsome Docs</a>
-      <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
-    </p>
+          <td class="text-left pr-2">
+            <div class="flex items-center">
+              <div class="flex-none w-16 h-16">
+                <g-image src="~/assets/img/phil.jpg" />
+              </div>
 
+              <div class="font-bold ml-4">James</div>
+            </div>
+          </td>
+          
+          <td class="px-2">999</td>
+          <td class="px-2">99</td>
+          <td class="px-2">99</td>
+          <td class="px-2">280</td>
+        </tr>
+      </tbody>
+    </table>
   </Layout>
 </template>
 
 <script>
 export default {
   metaInfo: {
-    title: 'Hello, world!'
+    title: 'Hitmarker Pool'
   }
 }
 </script>

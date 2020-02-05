@@ -1,5 +1,9 @@
 module.exports = {
-  theme: {},
-  variants: {},
-  plugins: []
+  theme: {
+    extend: {
+      colors: {
+        brand: '#FF5800'
+      }
+    }
+  }
 }
