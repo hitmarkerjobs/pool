@@ -1,0 +1,5 @@
+---
+name: James
+photo: /uploads/james.jpg
+---
+
