@@ -1,5 +1,11 @@
 <template>
   <Layout>
+    <div class="flex text-xs font-bold uppercase leading-none -mx-1">
+      <a href="#" class="bg-gray-700 px-3 py-2 mx-1">Season 1</a>
+      <a href="#" class="bg-gray-800 hover:text-brand px-3 py-2 mx-1">Season 2</a>
+      <a href="#" class="bg-gray-800 hover:text-brand px-3 py-2 mx-1">Season 3</a>
+    </div>
+
     <table class="table-auto w-full border border-gray-700 text-center">
       <thead>
         <tr class="bg-gray-800">
@@ -38,14 +44,6 @@
     </table>
   </Layout>
 </template>
-
-<script>
-export default {
-  metaInfo: {
-    title: 'Hitmarker Pool'
-  }
-}
-</script>
 
 <page-query>
   query {
