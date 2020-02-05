@@ -13,4 +13,6 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Name", name: "name", widget: "string"}
-      
+      - label: "Photo"
+        name: "photo"
+        widget: "image"
