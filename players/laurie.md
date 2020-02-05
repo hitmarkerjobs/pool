@@ -1,5 +1,0 @@
----
-name: Laurie
-photo: /uploads/laurie.jpg
----
-

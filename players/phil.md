@@ -1,5 +1,0 @@
----
-name: Rich
-photo: /uploads/rich.jpg
----
-

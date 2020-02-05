@@ -6,8 +6,8 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        path: 'players/**/*.md',
-        typeName: 'Player'
+        path: 'players/**/*.json',
+        typeName: 'Players'
       }
     },
     {
