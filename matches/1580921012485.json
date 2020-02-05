@@ -1,11 +1,7 @@
 {
   "id": "1580921012485",
-  "player1": {
-    "player": "James",
-    "score": 1
-  },
-  "player2": {
-    "player": "Phil",
-    "score": 2
-  }
+  "player1": "b8dd555a-1f8d-44aa-8f38-26e28a2bcfb5",
+  "player1Score": 1,
+  "player2": "32d20b40-1db0-4512-91c8-7bbc10014398",
+  "player2Score": 2
 }
