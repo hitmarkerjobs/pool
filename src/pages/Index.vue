@@ -5,10 +5,10 @@
         <tr class="bg-gray-800">
           <th width="1"></th>
           <th></th>
-          <th class="p-2">P</th>
-          <th class="p-2">w</th>
-          <th class="p-2">L</th>      
-          <th class="p-2">Pts</th>
+          <th class="font-bold p-2">P</th>
+          <th class="font-bold p-2">w</th>
+          <th class="font-bold p-2">L</th>      
+          <th class="font-bold p-2">Pts</th>
         </tr>
       </thead>
       <tbody>
