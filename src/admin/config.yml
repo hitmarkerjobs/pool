@@ -8,6 +8,7 @@ collections:
   - name: "players"
     label: "Players"
     folder: "players"
+    format: "json"
     identifier_field: name
     create: true
     slug: "{{slug}}"
@@ -19,8 +20,16 @@ collections:
   - name: "matches"
     label: "Matches"
     folder: "matches"
+    format: "json"
     create: true
+    identifier_field: id
     fields: 
+      - label: "ID"
+        name: "id"
+        widget: "datetime"
+        dateFormat: "x"
+        timeFormat: ""
+        format: "x"
       - label: "Player 1"
         name: "player1"
         widget: "object"
@@ -51,9 +60,3 @@ collections:
             widget: "number"
             min: 0
             max: 3
-      # - label: "Match Date"
-      #   name: "matchDate"
-      #   widget: "datetime"
-      #   dateFormat: "DD.MM.YYYY" # e.g. 24.12.2021
-      #   timeFormat: "HH:mm" # e.g. 21:07
-      #   format: "LLL"
