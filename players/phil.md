@@ -1,5 +1,5 @@
 ---
-name: Phil
-photo: /uploads/phil.jpg
+name: Rich
+photo: /uploads/rich.jpg
 ---
 
