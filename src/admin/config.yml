@@ -1,0 +1,16 @@
+backend:
+  name: github
+  repo: hitmarkerjobs/pool
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "players"
+    label: "Players"
+    folder: "players"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      
