@@ -49,7 +49,7 @@ export default {
 
 <page-query>
   query {
-    players: allPlayers {
+    players: allPlayer {
       edges {
         node {
           name
