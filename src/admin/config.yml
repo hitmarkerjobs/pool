@@ -23,41 +23,28 @@ collections:
     create: true
     identifier_field: id
     fields: 
-      - label: "ID"
-        name: "id"
-        widget: "datetime"
-        dateFormat: "x"
-        timeFormat: ""
-        format: "x"
+      - { label: "ID", name: "id", widget: "id" }
       - label: "Player 1"
         name: "player1"
-        widget: "object"
-        fields:
-          - label: "Player"
-            name: "player"
-            widget: "relation"
-            collection: "players"
-            searchFields: ['name']
-            displayFields: ['name']
-            valueField: "id"
-          - label: "Score"
-            name: "score"
-            widget: "number"
-            min: 0
-            max: 3
+        widget: "relation"
+        collection: "players"
+        searchFields: ['name']
+        displayFields: ['name']
+        valueField: "id"
+      - label: "Player 1 Score"
+        name: "player1Score"
+        widget: "number"
+        min: 0
+        max: 3
       - label: "Player 2"
         name: "player2"
-        widget: "object"
-        fields:
-          - label: "Player"
-            name: "player"
-            widget: "relation"
-            collection: "players"
-            searchFields: ['name']
-            displayFields: ['name']
-            valueField: "id"
-          - label: "Score"
-            name: "score"
-            widget: "number"
-            min: 0
-            max: 3
+        widget: "relation"
+        collection: "players"
+        searchFields: ['name']
+        displayFields: ['name']
+        valueField: "id"
+      - label: "Player 2 Score"
+        name: "player2Score"
+        widget: "number"
+        min: 0
+        max: 3

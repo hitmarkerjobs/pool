@@ -15,9 +15,10 @@ module.exports = {
       options: {
         path: 'matches/**/*.json',
         typeName: 'Matches',
-        // refs: {
-        //   player1: { player: 'Player' }
-        // }
+        refs: {
+          player1: 'Player',
+          player2: 'Player'
+        }
       }
     },
     {
