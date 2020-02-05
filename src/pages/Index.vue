@@ -12,34 +12,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="border-t border-gray-600">
-          <td class="px-4">2</td>
+        <tr 
+          v-for="(edge, index) in $page.players.edges"
+          :key="edge.node.id"
+          class="border-t border-gray-600"
+        >
+          <td class="px-4">{{ index+1 }}</td>
 
           <td class="text-left pr-2">
             <div class="flex items-center">
               <div class="flex-none w-16 h-16">
-                <g-image src="~/assets/img/phil.jpg" />
+                <g-image :src="edge.node.photo" />
               </div>
 
-              <div class="font-bold ml-4">James</div>
-            </div>
-          </td>
-          
-          <td class="px-2">999</td>
-          <td class="px-2">99</td>
-          <td class="px-2">99</td>
-          <td class="px-2">280</td>
-        </tr>
-        <tr class="border-t border-gray-600">
-          <td class="px-2">2</td>
-
-          <td class="text-left pr-2">
-            <div class="flex items-center">
-              <div class="flex-none w-16 h-16">
-                <g-image src="~/assets/img/phil.jpg" />
-              </div>
-
-              <div class="font-bold ml-4">James</div>
+              <div class="font-bold ml-4">{{ edge.node.name }}</div>
             </div>
           </td>
           
@@ -61,3 +47,15 @@ export default {
 }
 </script>
 
+<page-query>
+  query {
+    players: allPlayers {
+      edges {
+        node {
+          name
+          photo
+        }
+      }
+    }
+  }
+</page-query>
