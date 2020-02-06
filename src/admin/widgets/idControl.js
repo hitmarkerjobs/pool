@@ -1,7 +1,7 @@
 import React from 'react';
 import uuid from 'uuid/v4';
 
-export default class idWidgetControl extends React.Component {
+export default class idControl extends React.Component {
   getInitialState() { return {}; }
 
   componentDidMount() {

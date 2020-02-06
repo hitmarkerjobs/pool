@@ -13,8 +13,8 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        path: 'matches/**/*.json',
-        typeName: 'Matches',
+        path: 'seasons/**/*.json',
+        typeName: 'Seasons',
         refs: {
           player1: 'Player',
           player2: 'Player'
