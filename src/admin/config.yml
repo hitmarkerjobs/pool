@@ -13,7 +13,6 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "ID", name: "id", widget: "id"}
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Photo", name: "photo", widget: "image"}
   - name: "seasons"
@@ -26,27 +25,13 @@ collections:
       - label: "Title"
         name: "title"
         widget: "string"
-      - label: "Test123"
-        name: "test123"
+      - label: "Matches"
+        name: "matches"
         widget: "list"
         fields:
           - label: Fixture
             name: fixture
             widget: object
             fields:
-              # - label: "Player 1"
-              #   name: "player1"
-              #   widget: "relation"
-              #   collection: "players"
-              #   searchFields: ['name']
-              #   displayFields: ['name']
-              #   valueField: "id"
-              - { label: "Player 1 Score", name: "player1Score", widget: "Number", min: 0 }
-              # - label: "Player 2"
-              #   name: "player2"
-              #   widget: "relation"
-              #   collection: "players"
-              #   searchFields: ['name']
-              #   displayFields: ['name']
-              #   valueField: "id"
-              - { label: "Player 2 Score", name: "player2Score", widget: "Number", min: 0 }
+              - { label: "Player 1 Score", name: "player1Score", widget: "number", min: 0 }
+              - { label: "Player 2 Score", name: "player2Score", widget: "number", min: 0 }

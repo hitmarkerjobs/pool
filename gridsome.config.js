@@ -14,11 +14,7 @@ module.exports = {
       use: '@gridsome/source-filesystem',
       options: {
         path: 'seasons/**/*.json',
-        typeName: 'Seasons',
-        refs: {
-          player1: 'Player',
-          player2: 'Player'
-        }
+        typeName: 'Seasons'
       }
     },
     {
