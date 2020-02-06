@@ -65,8 +65,6 @@ export default {
         node {
           name
           photo
-          wins
-          losses
         }
       }
     }

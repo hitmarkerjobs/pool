@@ -21,15 +21,18 @@ collections:
     folder: "seasons"
     format: "json"
     create: true
+    slug: "{{slug}}"
     fields: 
-      - { label: "Title", name: "title", widget: "string" }
-      - label: "Fixtures"
-        name: "fixtures"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Test123"
+        name: "test123"
         widget: "list"
         fields:
-          - label: "Fixture"
-            name: "fixture"
-            widget: "object"
+          - label: Fixture
+            name: fixture
+            widget: object
             fields:
               # - label: "Player 1"
               #   name: "player1"
@@ -46,4 +49,4 @@ collections:
               #   searchFields: ['name']
               #   displayFields: ['name']
               #   valueField: "id"
-              # - { label: "Player 2 Score", name: "player2Score", widget: "Number", min: 0 }
+              - { label: "Player 2 Score", name: "player2Score", widget: "Number", min: 0 }
