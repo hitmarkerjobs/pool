@@ -1,5 +1,10 @@
 {
   "title": "Season 1",
-  "fixtures": [],
+  "fixtures": [
+    {
+      "player1Score": 0,
+      "player2Score": 0
+    }
+  ],
   "dateCreated": "2020-02-07T10:54:50.520Z"
 }
