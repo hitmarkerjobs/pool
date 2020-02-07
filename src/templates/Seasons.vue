@@ -55,6 +55,14 @@
 </template>
 
 <script>
+Object.defineProperty(Array.prototype, 'flat', {
+    value: function(depth = 1) {
+      return this.reduce(function (flat, toFlatten) {
+        return flat.concat((Array.isArray(toFlatten) && (depth>1)) ? toFlatten.flat(depth-1) : toFlatten);
+      }, []);
+    }
+});
+
 export default {
   metaInfo: {
     title: 'Hitmarker Pool'
@@ -73,7 +81,8 @@ export default {
 
       let fixtures = this.$page.season.fixtures || [];
 
-      let players = fixtures.map(f => {
+      let players = fixtures
+        .map(f => {
           if (f.player1Score || f.player2Score) {
             let winner = (f.player1Score > f.player2Score) ?
               f.player1 :
@@ -86,7 +95,7 @@ export default {
             return [f.player1, f.player2];
           }
 
-          return null;
+          return [];
         })
         .flat()
         .filter(Boolean)
