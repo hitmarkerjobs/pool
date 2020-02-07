@@ -12,8 +12,6 @@
       </g-link>
     </div>
 
-    {{ seasonPlayers }}
-
     <table class="table-auto w-full border border-gray-700 text-center">
       <thead>
         <tr class="bg-gray-800">
@@ -26,9 +24,9 @@
         </tr>
       </thead>
       <tbody>
-<!--        <tr 
-          v-for="(edge, index) in players"
-          :key="edge.node.id"
+      <tr 
+          v-for="(player, index) in seasonPlayers"
+          :key="player.id"
           class="border-t border-gray-700"
         >
           <td class="px-4">{{ index+1 }}</td>
@@ -36,18 +34,18 @@
           <td class="text-left pr-2">
             <div class="flex items-center">
               <div class="flex-none w-16 h-16">
-                <g-image :src="edge.node.photo" />
+                <g-image :src="player.photo" />
               </div>
 
-              <div class="font-bold ml-4">{{ edge.node.name }}</div>
+              <div class="font-bold ml-4">{{ player.name }}</div>
             </div>
           </td>
           
-          <td class="px-2">{{ edge.node.wins + edge.node.losses }}</td>
-          <td class="px-2">{{ edge.node.wins }}</td>
-          <td class="px-2">{{ edge.node.losses }}</td>
-          <td class="px-2">{{ edge.node.wins * 3 }}</td>
-        </tr> -->
+          <td class="px-2"></td>
+          <td class="px-2"></td>
+          <td class="px-2"></td>
+          <td class="px-2"></td>
+        </tr>
       </tbody>
     </table>
   </Layout>
@@ -67,13 +65,14 @@ export default {
           return ps;
         }, {});
 
-      let playerIds = this.$page.season.fixtures.map(f => {
-        f = f.fixture;
-        return [f.player1, f.player2];
-      }).flat().filter((v, i, a) => a.indexOf(v) === i); 
-
-
-      return playerIds.map(p => allPlayers[p]);
+      return this.$page.season.fixtures
+        .map(f => {
+          f = f.fixture;
+          return [f.player1, f.player2];
+        })
+        .flat()
+        .filter((v, i, a) => a.indexOf(v) === i)
+        .map(p => allPlayers[p]);
     }
   }
 }
