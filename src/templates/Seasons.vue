@@ -66,10 +66,7 @@ export default {
         }, {});
 
       return this.$page.season.fixtures
-        .map(f => {
-          f = f.fixture;
-          return [f.player1, f.player2];
-        })
+        .map(f => [f.player1, f.player2])
         .flat()
         .filter((v, i, a) => a.indexOf(v) === i)
         .map(p => allPlayers[p]);
@@ -80,7 +77,7 @@ export default {
 
 <page-query>
   query ($id: ID!) {
-    seasons:allSeasons {
+    seasons:allSeasons (sortBy:"dateCreated", order:ASC) {
       edges {
         node {
           id
@@ -101,12 +98,10 @@ export default {
     season:seasons (id: $id) {
       title
       fixtures {
-        fixture {
-          player1
-          player1Score
-          player2
-          player2Score
-        }
+        player1
+        player1Score
+        player2
+        player2Score
       }
     }
   }

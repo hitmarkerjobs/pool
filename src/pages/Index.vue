@@ -15,7 +15,7 @@ export default {
 
 <page-query>
   query {
-    latestSeason:allSeasons (limit:1, sortBy:"date", order:ASC) {
+    latestSeason:allSeasons (limit:1, sortBy:"dateCreated", order:ASC) {
         edges {
           node {
             path
