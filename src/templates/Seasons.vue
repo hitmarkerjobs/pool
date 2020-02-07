@@ -25,7 +25,7 @@
       </thead>
       <tbody>
       <tr 
-          v-for="(player, index) in seasonPlayers"
+          v-for="(player, index) in players"
           :key="player.id"
           class="border-t border-gray-700"
         >
@@ -41,10 +41,10 @@
             </div>
           </td>
           
-          <td class="px-2"></td>
-          <td class="px-2"></td>
-          <td class="px-2"></td>
-          <td class="px-2"></td>
+          <td class="px-2">{{ player.wins + player.losses }}</td>
+          <td class="px-2">{{ player.wins }}</td>
+          <td class="px-2">{{ player.losses }}</td>
+          <td class="px-2">{{ player.wins * 3 }}</td>
         </tr>
       </tbody>
     </table>
@@ -57,7 +57,10 @@ export default {
     title: 'Hitmarker Pool'
   },
   computed: {
-    seasonPlayers () {
+    players () {
+      let wins = [];
+      let losses = [];
+
       let allPlayers = this.$page.players.edges
         .map(p => p.node)
         .reduce((ps, p) => {
@@ -65,11 +68,41 @@ export default {
           return ps;
         }, {});
 
-      return this.$page.season.fixtures
-        .map(f => [f.player1, f.player2])
+      let players = this.$page.season.fixtures
+        .map(f => {
+          let winner = (f.player1Score > f.player2Score) ?
+            f.player1 :
+            f.player2;
+          let loser = (winner == f.player1) ? f.player2 : f.player1;
+
+          wins.push(winner);
+          losses.push(loser);
+
+          return [f.player1, f.player2];
+        })
         .flat()
         .filter((v, i, a) => a.indexOf(v) === i)
         .map(p => allPlayers[p]);
+
+      wins = wins.reduce((prev, curr) => (prev[curr] = ++prev[curr] || 1, prev), {});
+      losses = losses.reduce((prev, curr) => (prev[curr] = ++prev[curr] || 1, prev), {});
+
+      players.forEach(player => {
+        player.wins = wins[player.id] || 0;
+        player.losses = losses[player.id] || 0;
+      });
+
+      return players.sort((a,b) => {
+        if (a.wins > b.wins) {
+          return -1;
+        } else if (a.wins < b.wins) {
+          return 1;
+        } else if (a.losses < b.losses) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
     }
   }
 }
@@ -77,7 +110,7 @@ export default {
 
 <page-query>
   query ($id: ID!) {
-    seasons:allSeasons (sortBy:"dateCreated", order:ASC) {
+    seasons:allSeasons (sortBy:"dateCreated", order:DESC) {
       edges {
         node {
           id
