@@ -24,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-      <tr 
+        <tr 
           v-for="(player, index) in players"
           :key="player.id"
           class="border-t border-gray-700"
@@ -45,6 +45,9 @@
           <td class="px-2">{{ player.wins }}</td>
           <td class="px-2">{{ player.losses }}</td>
           <td class="px-2">{{ player.wins * 3 }}</td>
+        </tr>
+        <tr v-if="!players.length">
+          <td colspan="6" class="py-2">No games have been played.</td>
         </tr>
       </tbody>
     </table>
