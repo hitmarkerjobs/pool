@@ -47,4 +47,4 @@ collections:
             displayFields: ['name']
             valueField: "id"
           - { label: "Player 2 Score", name: "player2Score", widget: "number", default: 0, valueType: int, required: false }
-          - { label: "Date Created", name: "dateCreated", widget: "datetime" }
+      - { label: "Date Created", name: "dateCreated", widget: "datetime" }
