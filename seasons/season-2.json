@@ -1,13 +1,4 @@
 {
   "title": "Season 2",
-  "fixtures": [
-    {
-      "fixture": {
-        "player1": "f5c20a00-82dd-4548-8e25-42877b1ad1b3",
-        "player1Score": 0,
-        "player2": "071736ed-a444-47a9-82b3-1f5d87284120",
-        "player2Score": 0
-      }
-    }
-  ]
+  "fixtures": []
 }
