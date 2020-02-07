@@ -74,17 +74,22 @@ export default {
       let fixtures = this.$page.season.fixtures || [];
 
       let players = fixtures.map(f => {
-          let winner = (f.player1Score > f.player2Score) ?
-            f.player1 :
-            f.player2;
-          let loser = (winner == f.player1) ? f.player2 : f.player1;
+          if (f.player1Score || f.player2Score) {
+            let winner = (f.player1Score > f.player2Score) ?
+              f.player1 :
+              f.player2;
+            let loser = (winner == f.player1) ? f.player2 : f.player1;
 
-          wins.push(winner);
-          losses.push(loser);
+            wins.push(winner);
+            losses.push(loser);
 
-          return [f.player1, f.player2];
+            return [f.player1, f.player2];
+          }
+
+          return null;
         })
         .flat()
+        .filter(Boolean)
         .filter((v, i, a) => a.indexOf(v) === i)
         .map(p => allPlayers[p]);
 
