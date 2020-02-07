@@ -2,6 +2,9 @@ const tailwindcss = require("tailwindcss");
 
 module.exports = {
   siteName: 'Hitmarker Pool',
+  templates: {
+    Seasons: '/:title',
+  },
   plugins: [
     {
       use: '@gridsome/source-filesystem',
