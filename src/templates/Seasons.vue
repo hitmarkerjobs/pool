@@ -71,8 +71,9 @@ export default {
           return ps;
         }, {});
 
-      let players = this.$page.season.fixtures
-        .map(f => {
+      let fixtures = this.$page.season.fixtures || [];
+
+      let players = fixtures.map(f => {
           let winner = (f.player1Score > f.player2Score) ?
             f.player1 :
             f.player2;
