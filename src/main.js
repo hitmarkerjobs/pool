@@ -7,6 +7,6 @@ export default function (Vue, { router, head, isClient }) {
   head.bodyAttrs = { class: 'bg-gray-900 text-gray-100 antialiased' };
   head.meta.push({
     name: "robots",
-    content: "no-index"
+    content: "noindex"
   });
 }
