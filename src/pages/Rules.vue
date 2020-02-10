@@ -14,7 +14,7 @@ TBC
 <script>
 export default {
   metaInfo: {
-    title: 'Rules'
+    title: 'Rules | Hitmarker Pool'
   }
 }
 </script>

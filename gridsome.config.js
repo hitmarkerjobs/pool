@@ -2,6 +2,7 @@ const tailwindcss = require("tailwindcss");
 
 module.exports = {
   siteName: 'Hitmarker Pool',
+  titleTemplate: '%s',
   templates: {
     Seasons: '/:title',
   },
