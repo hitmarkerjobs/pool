@@ -1,5 +1,72 @@
 {
   "title": "Season 2",
-  "fixtures": [],
+  "fixtures": [
+    {
+      "player1": "ba22dd33-ba0b-424c-922a-b06931f9ad1c",
+      "player1Score": 2,
+      "player2": "e0838d08-0470-4312-94cf-c7dc7958dd98",
+      "player2Score": 1
+    },
+    {
+      "player1": "fb072ba0-20e8-42bd-9867-00436577a95b",
+      "player1Score": 2,
+      "player2": "a51ee2ee-3dbd-4647-8f5c-be7a72719448",
+      "player2Score": 0
+    },
+    {
+      "player1": "ba22dd33-ba0b-424c-922a-b06931f9ad1c",
+      "player1Score": 2,
+      "player2": "a51ee2ee-3dbd-4647-8f5c-be7a72719448",
+      "player2Score": 0
+    },
+    {
+      "player1": "fb072ba0-20e8-42bd-9867-00436577a95b",
+      "player1Score": 2,
+      "player2": "ba22dd33-ba0b-424c-922a-b06931f9ad1c",
+      "player2Score": 1
+    },
+    {
+      "player1": "74e23480-3228-4b73-b7a7-1a8f1b5c0f99",
+      "player1Score": 2,
+      "player2": "ba22dd33-ba0b-424c-922a-b06931f9ad1c",
+      "player2Score": 1
+    },
+    {
+      "player1": "a51ee2ee-3dbd-4647-8f5c-be7a72719448",
+      "player1Score": 2,
+      "player2": "2159cbf2-d0be-4d6a-ba3d-7ae2e856e7a5",
+      "player2Score": 0
+    },
+    {
+      "player1": "74e23480-3228-4b73-b7a7-1a8f1b5c0f99",
+      "player1Score": 2,
+      "player2": "a51ee2ee-3dbd-4647-8f5c-be7a72719448",
+      "player2Score": 0
+    },
+    {
+      "player1": "74e23480-3228-4b73-b7a7-1a8f1b5c0f99",
+      "player1Score": 2,
+      "player2": "e0838d08-0470-4312-94cf-c7dc7958dd98",
+      "player2Score": 0
+    },
+    {
+      "player1": "ba22dd33-ba0b-424c-922a-b06931f9ad1c",
+      "player1Score": 2,
+      "player2": "2159cbf2-d0be-4d6a-ba3d-7ae2e856e7a5",
+      "player2Score": 0
+    },
+    {
+      "player1": "fb072ba0-20e8-42bd-9867-00436577a95b",
+      "player1Score": 2,
+      "player2": "e0838d08-0470-4312-94cf-c7dc7958dd98",
+      "player2Score": 1
+    },
+    {
+      "player1": "a51ee2ee-3dbd-4647-8f5c-be7a72719448",
+      "player1Score": 2,
+      "player2": "e0838d08-0470-4312-94cf-c7dc7958dd98",
+      "player2Score": 1
+    }
+  ],
   "dateCreated": "2021-09-24T12:41:05.717Z"
 }
