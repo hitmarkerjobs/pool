@@ -23,7 +23,7 @@
 
     <footer class="px-4 mb-8">
       <div class="max-w-2xl mx-auto">
-        <div class="text-sm text-gray-600">&copy; 2020 <a target="_blank" href="https://hitmarker.net" class="hover:text-brand">Hitmarker Ltd.</a></div>
+        <div class="text-sm text-gray-600">&copy; {{ (new Date()).getFullYear() }} <a target="_blank" href="https://hitmarker.net" class="hover:text-brand">Hitmarker Ltd.</a></div>
       </div>
     </footer>
   </div>
