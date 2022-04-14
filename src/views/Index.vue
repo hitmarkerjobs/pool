@@ -79,10 +79,9 @@ const standings = computed(() => {
 </script>
 
 <template>
-  <nav class="flex flex-wrap mb-3">
+  <nav class="flex flex-wrap gap-3 mb-3">
     <button v-for="season in seasons" :key="season" @click="activeSeason = season" :class="[ activeSeason === season ? 'bg-brand' : 'bg-gray-800 hover:bg-gray-700', 'text-xxs font-semibold uppercase tracking-widest px-3.5 py-2' ]">{{ season.title }}</button>
   </nav>
-  
 
   <table class="min-w-full border border-gray-700">
     <thead class="bg-gray-800 border-b border-gray-700">
