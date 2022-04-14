@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Season 1",
+    "rounds": 1,
+    "matches": [
+      { "James": 1, "Phil": 2 },
+      { "Cam": 0, "Rich": 2 },
+      { "Laurie": 2, "Phil": 1 }
+    ],
+    "players": ["Phil", "Rich", "James", "Cam", "Laurie"]
+  },
+  {
+    "id": 2,
+    "title": "Season 2",
+    "rounds": 3,
+    "matches": [],
+    "players": ["Phil", "Rich", "James", "Cam", "Laurie"]
+  }
+]

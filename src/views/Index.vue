@@ -1,56 +1,74 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { useFixturesStore } from '../store/fixtures'
-const fixturesStore = useFixturesStore()
+import { useSeasonsStore } from '../store/seasons'
+const seasonsStore = useSeasonsStore()
 
 const activeSeason = ref(null)
-const seasons = computed(() => Object.values(fixturesStore.seasons).reverse())
+const seasons = computed(() => Object.values(seasonsStore.seasons).reverse())
 
 activeSeason.value = seasons.value[0]
 
-const fixtures = computed(() => fixturesStore.fixturesBySeason(activeSeason.value))
-const standings = computed(() => {
-  const players = fixtures.value.reduce((players, fixture) => {
-    if (!players[fixture.player1.name]) {
-      players[fixture.player1.name] = {
-        name: fixture.player1.name,
-        wins: 0,
-        losses: 0,
-        frames: 0,
+const fixtures = computed(() => {
+  const players = activeSeason.value.players
+  const fixtures = []
+
+  for (let i = 0; i < activeSeason.value.rounds; i++) {
+    for (let i = 0; i < players.length; i++) {
+      for (let j = i + 1; j < players.length; j++) {
+        fixtures.push({ [players[i]]: 0, [players[j]]: 0 })
       }
     }
+  }
 
-    if (!players[fixture.player2.name]) {
-      players[fixture.player2.name] = {
-        name: fixture.player2.name,
-        wins: 0,
-        losses: 0,
-        frames: 0,
-      }
+  activeSeason.value.matches.forEach(match => {
+    const players = Object.keys(match)
+    const fixture = fixtures.findIndex(f => {
+      return f.hasOwnProperty(players[0]) && f.hasOwnProperty(players[1]) && (f[players[1]] != 0 || f[players[2]] != 0)
+    })
+
+    if (fixture != -1) {
+      fixtures.splice(fixture, 1)
     }
+  })
 
-    players[fixture.player1.name].frames += fixture.player1.frames
-    players[fixture.player2.name].frames += fixture.player2.frames
+  return activeSeason.value.matches.concat(fixtures)
+})
 
-    const winner = (fixture.player1.frames > fixture.player2.frames) ? fixture.player1.name : fixture.player2.name;
-    const loser = (winner == fixture.player1.name) ? fixture.player2.name : fixture.player1.name;
+const seasonPlayers = computed(() => {
+  return activeSeason.value.players.map(player => {
+    const playerMatches = activeSeason.value.matches.filter(match => {
+      return match.hasOwnProperty(player)
+    });
 
-    players[winner].wins += 1
-    players[loser].losses += 1
+    let won = 0
+    let lost = 0
+    let framesFor = 0
+    let framesAgainst = 0
+    
+    playerMatches.forEach((match) => {
+      const opponent = Object.keys(match).find(key => key != player) 
+      
+      if (match[player] > match[opponent]) {
+        won++
+        framesFor += match[player]
+        framesAgainst += match[opponent]
+      } else {
+        lost++
+        framesFor += match[player]
+        framesAgainst += match[opponent]
+      }
+    })
 
-    return players
-  }, {})
+    console.log(playerMatches)
 
-  return Object.values(players).sort((a, b) => {
-    if (a.wins > b.wins) return -1
-    if (a.wins < b.wins) return 1
-    if (a.losses < b.losses) return -1
-    if (a.losses > b.losses) return 1
-
-    // if (a.frames < b.frames) return -1
-    // if (a.frames > b.frames) return 1
-
-    return 1
+    return {
+      name: player,
+      played: playerMatches.length,
+      won,
+      lost,
+      framesFor,
+      framesAgainst,
+    }
   })
 })
 
@@ -58,22 +76,25 @@ const standings = computed(() => {
 
 <template>
   <div class="flex space-x-2">
-    <button v-for="season in seasons" :key="season" :class="{ 'underline': activeSeason === season }" @click="activeSeason = season">
-      Season {{ season }}
+    <button v-for="season in seasons" :key="season.id" :class="{ 'underline': activeSeason === season }" @click="activeSeason = season">
+      {{ season.title }}
     </button>
   </div>
 
   <h2>Standings</h2>
   <ul>
-    <li v-for="player in standings">
+    <li v-for="player in seasonPlayers">
       {{ player }}
     </li>
   </ul>
-
+ 
+  
   <h2>Fixtures</h2>
   <ul>
-    <li v-for="fixture in fixtures">
-      {{ fixture }}
+    <li v-for="fixture in fixtures" class="flex" :class="{ 'opacity-50': Object.values(fixture).reduce((total, score) => total += score, 0) > 0 }">
+      <div v-for="([player, score], i) in Object.entries(fixture)">
+        {{ player }} {{ score }} <template v-if="i === 0">vs&nbsp;</template>
+      </div>
     </li>
   </ul>
 </template>
