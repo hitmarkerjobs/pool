@@ -34,7 +34,7 @@ const fixtures = computed(() => {
   return activeSeason.value.matches.concat(fixtures)
 })
 
-const seasonPlayers = computed(() => {
+const standings = computed(() => {
   return activeSeason.value.players.map(player => {
     const playerMatches = activeSeason.value.matches.filter(match => {
       return match.hasOwnProperty(player)
@@ -59,8 +59,6 @@ const seasonPlayers = computed(() => {
       }
     })
 
-    console.log(playerMatches)
-
     return {
       name: player,
       played: playerMatches.length,
@@ -70,25 +68,57 @@ const seasonPlayers = computed(() => {
       framesAgainst,
     }
   })
+  .sort((a, b) => {
+    if (a.won > b.won) return -1
+    if (a.won < b.won) return 1
+    if (a.lost < b.lost) return -1
+    return 1;
+  })
 })
 
 </script>
 
 <template>
-  <div class="flex space-x-2">
-    <button v-for="season in seasons" :key="season.id" :class="{ 'underline': activeSeason === season }" @click="activeSeason = season">
-      {{ season.title }}
-    </button>
-  </div>
-
-  <h2>Standings</h2>
-  <ul>
-    <li v-for="player in seasonPlayers">
-      {{ player }}
-    </li>
-  </ul>
- 
+  <nav class="flex flex-wrap mb-3">
+    <button v-for="season in seasons" :key="season" @click="activeSeason = season" :class="[ activeSeason === season ? 'bg-brand' : 'bg-gray-800 hover:bg-gray-700', 'text-xxs font-semibold uppercase tracking-widest px-3.5 py-2' ]">{{ season.title }}</button>
+  </nav>
   
+
+  <table class="min-w-full border border-gray-700">
+    <thead class="bg-gray-800 border-b border-gray-700">
+      <tr>
+        <th width="1"></th>
+        <th></th>
+        <th class="w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">P</th>
+        <th class="w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">W</th>
+        <th class="w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">L</th>
+        <th class="hidden md:table-cell w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">FF</th>
+        <th class="hidden md:table-cell w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">FA</th>
+        <th class="w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">FD</th>
+        <th class="w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest pr-4 p-2">Pts</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-700">
+      <tr v-for="(player, index) in standings">
+        <td class="text-sm text-center pl-4 p-2">{{ index + 1 }}</td>
+        <td class="px-2">
+          <div class="flex items-center">
+            <img :src="`https://pool.hitmarker.net/uploads/${player.name.toLowerCase()}.jpg`" alt="{{ player.name }}" class="flex-none w-12 md:w-16 h-12 md:h-16">
+            <span class="font-semibold ml-4">{{ player.name }}</span>
+          </div>
+        </td>
+        <td class="text-sm text-center p-2">{{ player.played }}</td>
+        <td class="text-sm text-center p-2">{{ player.won }}</td>
+        <td class="text-sm text-center p-2">{{ player.lost }}</td>
+        <td class="hidden md:table-cell text-sm text-center p-2">{{ player.framesFor }}</td>
+        <td class="hidden md:table-cell text-sm text-center p-2">{{ player.framesAgainst }}</td>
+        <td class="text-sm text-center p-2">{{ player.framesFor - player.framesAgainst }}</td>
+        <td class="text-sm text-center font-semibold pr-4 p-2">{{ player.won * 3 }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <h2>Fixtures</h2>
   <ul>
     <li v-for="fixture in fixtures" class="flex" :class="{ 'opacity-50': Object.values(fixture).reduce((total, score) => total += score, 0) > 0 }">
@@ -97,4 +127,6 @@ const seasonPlayers = computed(() => {
       </div>
     </li>
   </ul>
+
+
 </template>
