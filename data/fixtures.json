@@ -1,0 +1,24 @@
+[
+  {
+    "season": 1,
+    "player1":{
+      "name": "James",
+      "frames": 1
+    },
+    "player2": {
+      "name": "Phil",
+      "frames": 2
+    }
+  },
+  {
+    "season": 2,
+    "player1":{
+      "name": "Phil",
+      "frames": 2
+    },
+    "player2": {
+      "name": "James",
+      "frames": 0
+    }
+  }
+]
