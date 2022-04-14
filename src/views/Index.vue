@@ -59,6 +59,8 @@ const standings = computed(() => {
       }
     })
 
+    const framesDifference =  framesFor - framesAgainst
+
     return {
       name: player,
       played: playerMatches.length,
@@ -66,12 +68,16 @@ const standings = computed(() => {
       lost,
       framesFor,
       framesAgainst,
+      framesDifference
     }
   })
   .sort((a, b) => {
     if (a.won > b.won) return -1
     if (a.won < b.won) return 1
     if (a.lost < b.lost) return -1
+    if (a.lost > b.lost) return 1
+    if (a.framesDifference > b.framesDifference) return -1
+
     return 1;
   })
 })
@@ -112,21 +118,19 @@ const standings = computed(() => {
         <td class="text-sm text-center p-2">{{ player.lost }}</td>
         <td class="hidden md:table-cell text-sm text-center p-2">{{ player.framesFor }}</td>
         <td class="hidden md:table-cell text-sm text-center p-2">{{ player.framesAgainst }}</td>
-        <td class="text-sm text-center p-2">{{ player.framesFor - player.framesAgainst }}</td>
+        <td class="text-sm text-center p-2">{{ player.framesDifference }}</td>
         <td class="text-sm text-center font-semibold pr-4 p-2">{{ player.won * 3 }}</td>
       </tr>
     </tbody>
   </table>
 
-
-  <h2>Fixtures</h2>
+  <!-- <h2>Fixtures</h2>
   <ul>
     <li v-for="fixture in fixtures" class="flex" :class="{ 'opacity-50': Object.values(fixture).reduce((total, score) => total += score, 0) > 0 }">
       <div v-for="([player, score], i) in Object.entries(fixture)">
         {{ player }} {{ score }} <template v-if="i === 0">vs&nbsp;</template>
       </div>
     </li>
-  </ul>
-
+  </ul> -->
 
 </template>
