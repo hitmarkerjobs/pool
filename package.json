@@ -1,20 +1,17 @@
 {
   "name": "pool",
   "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "build": "gridsome build",
-    "develop": "gridsome develop",
-    "explore": "gridsome explore"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@gridsome/source-filesystem": "^0.6.2",
-    "@gridsome/transformer-json": "^0.2.1",
-    "gridsome": "^0.7.0",
-    "gridsome-plugin-netlify-cms": "^1.0.9",
-    "netlify-cms": "^2.10.16",
-    "uuid": "^3.4.0"
+    "vue": "^3.2.25"
   },
   "devDependencies": {
-    "tailwindcss": "^1.1.4"
+    "@vitejs/plugin-vue": "^2.3.1",
+    "vite": "^2.9.2"
   }
 }
