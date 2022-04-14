@@ -108,7 +108,7 @@ const standings = computed(() => {
         <td class="text-sm text-center pl-4 p-2">{{ index + 1 }}</td>
         <td class="px-2">
           <div class="flex items-center">
-            <img :src="`https://pool.hitmarker.net/uploads/${player.name.toLowerCase()}.jpg`" alt="{{ player.name }}" class="flex-none w-12 md:w-16 h-12 md:h-16">
+            <img :src="`/${player.name.toLowerCase()}.jpeg`" :alt="player.name" class="flex-none w-12 md:w-16 h-12 md:h-16">
             <span class="font-semibold ml-4">{{ player.name }}</span>
           </div>
         </td>
