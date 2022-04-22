@@ -40,7 +40,7 @@ const remainingFixtures = computed(() => {
 });
 
 const results = computed(() => {
-  return fixtures.value.filter(f => Object.values(f).reduce((a, b) => a + b, 0) > 0)
+  return fixtures.value.filter(f => Object.values(f).reduce((a, b) => a + b, 0) > 0).reverse()
 })
 
 const standings = computed(() => {
