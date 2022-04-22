@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useSeasonsStore } from '../store/seasons'
+import Fixture from '../components/Fixture.vue'
 const seasonsStore = useSeasonsStore()
 
 const activeSeason = ref(null)
@@ -32,6 +33,14 @@ const fixtures = computed(() => {
   })
 
   return activeSeason.value.matches.concat(fixtures)
+})
+
+const remainingFixtures = computed(() => {
+  return fixtures.value.filter(f => Object.values(f).reduce((a, b) => a + b, 0) == 0)
+});
+
+const results = computed(() => {
+  return fixtures.value.filter(f => Object.values(f).reduce((a, b) => a + b, 0) > 0)
 })
 
 const standings = computed(() => {
@@ -129,22 +138,15 @@ const standings = computed(() => {
     </table>
   </div>
 
-  <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-    <div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">  
+   <div>
       <div class="relative flex items-center mb-3">
         <div class="text-sm font-semibold uppercase tracking-widest pr-3.5">Fixtures</div>
         <div class="w-full h-[2px] bg-brand"></div>
       </div>
 
       <ul class="space-y-2">
-        <li v-for="fixture in fixtures" class="grid grid-cols-[1fr,76px,1fr] gap-3 border border-gray-700 p-3">
-          <div class="self-center text-right font-semibold truncate">James</div>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="inline-flex items-center justify-center h-8 bg-gray-700 text-xs font-semibold">-</div>
-            <div class="inline-flex items-center justify-center h-8 bg-gray-700 text-xs font-semibold">-</div>
-          </div>
-          <div class="self-center  font-semibold truncate">Cam</div>
-        </li>
+        <Fixture v-for="fixture, index in remainingFixtures" :key="`fixture-${index}`" :fixture="fixture"/>
       </ul>
     </div>
 
@@ -155,15 +157,8 @@ const standings = computed(() => {
       </div>
 
       <ul class="space-y-2">
-        <li v-for="fixture in fixtures" class="grid grid-cols-[1fr,76px,1fr] gap-3 border border-gray-700 p-3">
-          <div class="self-center text-right font-semibold truncate">James</div>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="inline-flex items-center justify-center h-8 bg-emerald-500 text-xs font-semibold">2</div>
-            <div class="inline-flex items-center justify-center h-8 bg-rose-500 text-xs font-semibold">0</div>
-          </div>
-          <div class="self-center  font-semibold truncate">Cam</div>
-        </li>
+        <Fixture v-for="fixture, index in results" :key="`result-${index}`" :fixture="fixture" played/>
       </ul>
     </div>
-  </div> -->
+  </div>
 </template>
