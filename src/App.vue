@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 z-10 bg-gray-900/50 backdrop-filter backdrop-blur px-5">
+  <header class="sticky top-0 z-10 bg-gray-900/50 backdrop-blur px-5">
     <div class="max-w-6xl mx-auto">
       <div class="flex justify-between border-b border-gray-800 py-5">
         <router-link to="/" class="inline-flex items-center">

@@ -81,55 +81,89 @@ const standings = computed(() => {
     return 1;
   })
 })
-
 </script>
 
 <template>
-  <nav class="flex flex-wrap gap-3 mb-3">
-    <button v-for="season in seasons" :key="season" @click="activeSeason = season" :class="[ activeSeason === season ? 'bg-brand' : 'bg-gray-800 hover:bg-gray-700', 'text-xxs font-semibold uppercase tracking-widest px-3.5 py-2' ]">{{ season.title }}</button>
+  <nav class="flex flex-wrap gap-3 mb-10">
+    <button v-for="season in seasons" :key="season" @click="activeSeason = season" :class="[ activeSeason === season ? 'bg-brand border-transparent' : 'bg-gray-800 hover:bg-gray-700 border-gray-700', 'text-xxs font-semibold uppercase tracking-widest border px-3.5 py-2' ]">{{ season.title }}</button>
   </nav>
 
-  <table class="min-w-full border border-gray-700">
-    <thead class="bg-gray-800 border-b border-gray-700">
-      <tr>
-        <th width="1"></th>
-        <th></th>
-        <th class="w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">P</th>
-        <th class="w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">W</th>
-        <th class="w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">L</th>
-        <th class="hidden md:table-cell w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">FF</th>
-        <th class="hidden md:table-cell w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">FA</th>
-        <th class="w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">FD</th>
-        <th class="w-[8%] text-xxs text-gray-400 font-semibold uppercase tracking-widest pr-4 p-2">Pts</th>
-      </tr>
-    </thead>
-    <tbody class="divide-y divide-gray-700">
-      <tr v-for="(player, index) in standings">
-        <td class="text-sm text-center pl-4 p-2">{{ index + 1 }}</td>
-        <td class="px-2">
-          <div class="flex items-center">
-            <img :src="`/${player.name.toLowerCase()}.jpeg`" :alt="player.name" class="flex-none w-12 md:w-16 h-12 md:h-16">
-            <span class="font-semibold ml-4">{{ player.name }}</span>
-          </div>
-        </td>
-        <td class="text-sm text-center p-2">{{ player.played }}</td>
-        <td class="text-sm text-center p-2">{{ player.won }}</td>
-        <td class="text-sm text-center p-2">{{ player.lost }}</td>
-        <td class="hidden md:table-cell text-sm text-center p-2">{{ player.framesFor }}</td>
-        <td class="hidden md:table-cell text-sm text-center p-2">{{ player.framesAgainst }}</td>
-        <td class="text-sm text-center p-2">{{ player.framesDifference }}</td>
-        <td class="text-sm text-center font-semibold pr-4 p-2">{{ player.won * 3 }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div>
+    <div class="relative flex items-center mb-3">
+      <div class="text-sm font-semibold uppercase tracking-widest pr-3.5">Standings</div>
+      <div class="w-full h-[2px] bg-brand"></div>
+    </div>
 
-  <!-- <h2>Fixtures</h2>
-  <ul>
-    <li v-for="fixture in fixtures" class="flex" :class="{ 'opacity-50': Object.values(fixture).reduce((total, score) => total += score, 0) > 0 }">
-      <div v-for="([player, score], i) in Object.entries(fixture)">
-        {{ player }} {{ score }} <template v-if="i === 0">vs&nbsp;</template>
+    <table class="min-w-full border border-gray-700 mb-10">
+      <thead class="bg-gray-800 border-b border-gray-700">
+        <tr>
+          <th width="1" class="hidden md:table-cell"></th>
+          <th></th>
+          <th class="w-[50px] md:w-[60px] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">P</th>
+          <th class="w-[50px] md:w-[60px] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">W</th>
+          <th class="w-[50px] md:w-[60px] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">L</th>
+          <th class="hidden md:table-cell w-[50px] md:w-[60px] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">FF</th>
+          <th class="hidden md:table-cell w-[50px] md:w-[60px] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">FA</th>
+          <th class="hidden md:table-cell w-[50px] md:w-[60px] text-xxs text-gray-400 font-semibold uppercase tracking-widest p-2">FD</th>
+          <th class="w-[50px] md:w-[60px] text-xxs text-gray-400 font-semibold uppercase tracking-widest pr-4 p-2">Pts</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-700">
+        <tr v-for="(player, index) in standings">
+          <td class="hidden md:table-cell text-sm text-center pl-4 p-2">{{ index + 1 }}</td>
+          <td class="pr-2 md:pl-2">
+            <div class="flex items-center">
+              <img :src="`/${player.name.toLowerCase()}.jpeg`" :alt="player.name" class="flex-none w-12 md:w-16 h-12 md:h-16">
+              <span class="font-semibold truncate ml-4">{{ player.name }}</span>
+            </div>
+          </td>
+          <td class="text-sm text-center p-2">{{ player.played }}</td>
+          <td class="text-sm text-center p-2">{{ player.won }}</td>
+          <td class="text-sm text-center p-2">{{ player.lost }}</td>
+          <td class="hidden md:table-cell text-sm text-center p-2">{{ player.framesFor }}</td>
+          <td class="hidden md:table-cell text-sm text-center p-2">{{ player.framesAgainst }}</td>
+          <td class="hidden md:table-cell text-sm text-center p-2">{{ player.framesDifference }}</td>
+          <td class="text-sm text-center font-semibold pr-4 p-2">{{ player.won * 3 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div>
+      <div class="relative flex items-center mb-3">
+        <div class="text-sm font-semibold uppercase tracking-widest pr-3.5">Fixtures</div>
+        <div class="w-full h-[2px] bg-brand"></div>
       </div>
-    </li>
-  </ul> -->
 
+      <ul class="space-y-2">
+        <li v-for="fixture in fixtures" class="grid grid-cols-[1fr,76px,1fr] gap-3 border border-gray-700 p-3">
+          <div class="self-center text-right font-semibold truncate">James</div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="inline-flex items-center justify-center h-8 bg-gray-700 text-xs font-semibold">-</div>
+            <div class="inline-flex items-center justify-center h-8 bg-gray-700 text-xs font-semibold">-</div>
+          </div>
+          <div class="self-center  font-semibold truncate">Cam</div>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="relative flex items-center mb-3">
+        <div class="text-sm font-semibold uppercase tracking-widest pr-3.5">Results</div>
+        <div class="w-full h-[2px] bg-brand"></div>
+      </div>
+
+      <ul class="space-y-2">
+        <li v-for="fixture in fixtures" class="grid grid-cols-[1fr,76px,1fr] gap-3 border border-gray-700 p-3">
+          <div class="self-center text-right font-semibold truncate">James</div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="inline-flex items-center justify-center h-8 bg-emerald-500 text-xs font-semibold">2</div>
+            <div class="inline-flex items-center justify-center h-8 bg-rose-500 text-xs font-semibold">0</div>
+          </div>
+          <div class="self-center  font-semibold truncate">Cam</div>
+        </li>
+      </ul>
+    </div>
+  </div> -->
 </template>
