@@ -137,7 +137,7 @@
       { "Rich": 2, "James": 1 },
       { "Rich": 2, "Phil": 0 },
       { "James": 2, "Laurie": 1 },
-      { "Cam": 2, "Laurie": 1 },
+      { "Cam": 2, "Laurie": 1 }
     ],
     "players": ["Phil", "Rich", "James", "Cam", "Laurie"]
   },
@@ -146,7 +146,7 @@
     "title": "Season 5",
     "rounds": 3,
     "matches": [
-      { "Phil": 2, "James": 0 },
+      { "Phil": 2, "James": 0 }
     ],
     "players": ["Phil", "Rich", "James", "Cam", "Laurie"]
   }
