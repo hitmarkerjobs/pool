@@ -148,7 +148,8 @@
     "matches": [
       { "Phil": 2, "James": 0 },
       { "Phil": 2, "James": 0 },
-      { "Cam": 2, "Laurie": 0 }
+      { "Cam": 2, "Laurie": 0 },
+      { "Phil": 2, "Laurie": 0 }
     ],
     "players": ["Phil", "Rich", "James", "Cam", "Laurie"]
   }
