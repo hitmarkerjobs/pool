@@ -164,7 +164,8 @@
       { "James": 2, "Cam": 0 },
       { "James": 2, "Laurie": 0 },
       { "Rich": 2, "Cam": 0 },
-      { "Phil": 2, "James": 0 }
+      { "Phil": 2, "James": 0 },
+      { "Phil": 2, "Laurie": 0 }
     ],
     "players": ["Phil", "Rich", "James", "Cam", "Laurie"]
   }
